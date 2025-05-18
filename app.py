@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import re
+
 
 app = Flask(__name__)
 
@@ -33,7 +35,7 @@ def index():
 
 @app.route('/add_client', methods=['POST'])
 def add_client():
-    nom = request.form['nom']
+    nom = request.form['nom'].strip()
     try:
         taux = float(request.form['taux']) / 100  # Convertir % en décimal
         annees = int(request.form['annees'])
@@ -42,8 +44,8 @@ def add_client():
 
     if taux < 0 or annees < 0:
         return "Taux et années doivent être positifs", 400
-    if not nom.isalpha():
-        return "Nom doit contenir seulement des lettres", 400
+    if not re.match(r'^[A-Za-zÀ-ÿ\s]+$', nom):
+        return "Nom doit contenir seulement des lettres et des espaces", 400
 
     valeur = (1 + taux) ** (-annees)
     client = Client(nom=nom, taux=taux, annees=annees, valeur=valeur)
