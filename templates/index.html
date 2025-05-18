@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8" />
+    <title>Gestion Clients</title>
+
+</head>
+<body>
+    <h1>Gestion Clients</h1>
+
+    <form action="/add_client" method="post">
+        Nom: <input type="text" name="nom" required pattern="[A-Za-z]+" title="Seulement lettres" />
+        Taux (%): <input type="number" step="0.01" name="taux" required min="0" />
+        Années: <input type="number" name="annees" required min="0" />
+        <button type="submit" class="calc-btn">Calculer</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Taux</th>
+                <th>Années</th>
+                <th>Valeur</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr>
+                <td>{{ client.nom }}</td>
+                <td>{{ (client.taux * 100) | round(2) }}%</td>
+                <td>{{ client.annees }}</td>
+                <td>{{ client.valeur | round(4) }}</td>
+                <td>
+                    <form method="POST" action="/delete_client/{{ client.id }}">
+                        <button type="submit" title="Supprimer" class="delete-btn">
+                            Supprimer
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

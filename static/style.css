@@ -1,0 +1,110 @@
+form button.calc-btn {
+  background-color: #007bff;  /* bleu */
+  border: none;
+  padding: 13px 28px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,123,255,0.4);
+  transition: background-color 0.25s ease, transform 0.2s ease;
+    margin-top: 2%;
+  /*margin-left: 15px; !* espace entre input et bouton *!*/
+}
+
+form button.calc-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px); /* léger mouvement vers le haut */
+  box-shadow: 0 6px 12px rgba(0,123,255,0.6);
+}
+
+/* Style bouton supprimer rouge */
+form button.delete-btn {
+  background-color: #dc3545; /* rouge bootstrap */
+  border: none;
+  padding: 13px 28px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(220,53,69,0.4);
+  transition: background-color 0.25s ease;
+  margin-left: 10px;
+}
+
+form button.delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+/* Table style */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: center;
+}
+
+th {
+  background-color: #18fdfa;
+  color: white;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Body style */
+body {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f8ff;
+  color: #333;
+}
+
+/* Input fields style */
+input[type="text"], input[type="number"] {
+  padding: 10px;
+  width: 150px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+label {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+/* Container for form */
+form {
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  input[type="text"], input[type="number"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  form button.calc-btn, form button.delete-btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
